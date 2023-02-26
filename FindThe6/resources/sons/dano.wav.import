@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dano.wav-9824c895257cf3403f4f433b219c585e.sample"
+
+[deps]
+
+source_file="res://resources/sons/dano.wav"
+dest_files=[ "res://.import/dano.wav-9824c895257cf3403f4f433b219c585e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tema.Ogg-2c2d63aeb89dc664559a23ca358f598a.oggstr"
+
+[deps]
+
+source_file="res://sons/tema.Ogg"
+dest_files=[ "res://.import/tema.Ogg-2c2d63aeb89dc664559a23ca358f598a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

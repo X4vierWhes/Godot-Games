@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/y2mate.com - 8-Bit RPG Music - Boss Battle _ Original Composition_NzFKyZc_va4.wav-22dc615ec3ef0776114f7f319a7b18a8.sample"
+
+[deps]
+
+source_file="res://sons/y2mate.com - 8-Bit RPG Music - Boss Battle _ Original Composition_NzFKyZc_va4.wav"
+dest_files=[ "res://.import/y2mate.com - 8-Bit RPG Music - Boss Battle _ Original Composition_NzFKyZc_va4.wav-22dc615ec3ef0776114f7f319a7b18a8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
