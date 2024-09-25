@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bba283wco8myy"]
+
+[ext_resource type="Script" path="res://scripts/player/pistol.gd" id="1_d0j0m"]
+[ext_resource type="Texture2D" uid="uid://b8vx7cche3eck" path="res://resources/guns/32x-pistol.png" id="2_83btf"]
+
+[node name="obj_Gun" type="Marker2D"]
+light_mask = 2
+visibility_layer = 2
+rotation = -0.0257045
+script = ExtResource("1_d0j0m")
+
+[node name="sprPistol" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(47.9841, 1.23368)
+rotation = 0.0463488
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_83btf")
+
+[node name="shootPoint" type="Marker2D" parent="sprPistol"]
+unique_name_in_owner = true
+position = Vector2(123.466, -74.054)
+rotation = -0.00172938
+scale = Vector2(6.66667, 6.66667)
