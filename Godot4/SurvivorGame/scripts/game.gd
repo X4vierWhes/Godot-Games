@@ -8,7 +8,7 @@ var points:int = 0
 
 func _process(delta: float) -> void:
 	if player.has_method("_getState"):
-		if player._getState() == true:
+		if player._getState():
 			get_tree().reload_current_scene()
 		else:
 			pass

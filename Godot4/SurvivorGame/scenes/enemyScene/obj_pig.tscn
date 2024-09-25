@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://n27hdlf0glfe"]
+[gd_scene load_steps=24 format=3 uid="uid://n27hdlf0glfe"]
 
 [ext_resource type="Script" path="res://scripts/enemy/objPig.gd" id="1_j81aj"]
 [ext_resource type="Texture2D" uid="uid://ddhs38a8m32i0" path="res://resources/AngryPig/Hit 1 (36x30).png" id="2_e1de5"]
@@ -139,18 +139,35 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytcv6"]
 radius = 32.0
 
-[node name="objPig" type="CharacterBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5owh"]
+bg_color = Color(0, 0.728118, 0.0579292, 1)
+
+[node name="objPig" type="CharacterBody2D" node_paths=PackedStringArray("healthBar")]
 visibility_layer = 3
 script = ExtResource("1_j81aj")
+healthBar = NodePath("ProgressBar")
 
 [node name="animPig" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 light_mask = 2
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_whl1k")
-animation = &"hurt"
+animation = &"run"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 shape = SubResource("CircleShape2D_ytcv6")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+light_mask = 0
+visibility_layer = 4
+offset_left = -24.0
+offset_top = -64.0
+offset_right = 32.0
+offset_bottom = -53.0
+theme_override_styles/background = SubResource("StyleBoxFlat_a5owh")
+max_value = 30.0
+value = 30.0
+show_percentage = false

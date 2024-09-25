@@ -9,15 +9,16 @@ func _physics_process(delta):
 	var direction = Input.get_vector(
 		"move_left","move_right",
 		"move_up", "move_down")
-	#guarda a direção do personegem 
+	#guarda a direção do personagem 
 	#multiplicando pela velocidade
 	velocity = direction * spd
 	#velocity.normalized()
 	#move o personagem "arrastando" pouco a pouco
 	move_and_slide()
 	
-	if Input.is_action_pressed("heal_player"):
-		health += 50
+	if Input.is_action_just_pressed("heal_player"):
+		health = 100.0
+		%ProgressBar.value = health
 	#Muda a direção do sprite se ele estiver indo para a esquerda
 	if direction.x != 0:
 		%animPlayer.flip_h = (direction.x < 0)
@@ -32,6 +33,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		%obj_Gun.shoot(1)
 	
+	#Sistema de dano
 	const damage_rate = 15.0
 	var overlaping_mobs = %hurtBox.get_overlapping_bodies()
 	#print(overlaping_mobs.size())
@@ -40,6 +42,12 @@ func _physics_process(delta):
 		%ProgressBar.value = health
 		if health <= 0.0:
 			death = true
+
+func _take_damage(dmg:float) -> void:
+	health -= dmg
+	%ProgressBar.value = health
+	if health <= 0.0:
+		death = true
 
 func _getState() -> bool:
 	return death
