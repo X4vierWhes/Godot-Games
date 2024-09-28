@@ -171,3 +171,9 @@ theme_override_styles/background = SubResource("StyleBoxFlat_a5owh")
 max_value = 30.0
 value = 30.0
 show_percentage = false
+
+[node name="stateTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.3
+
+[connection signal="timeout" from="stateTimer" to="." method="_on_state_timer_timeout"]
