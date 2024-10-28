@@ -13,8 +13,9 @@ point_count = 5
 [sub_resource type="LabelSettings" id="LabelSettings_u54on"]
 font_size = 24
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "player")]
 script = ExtResource("1_4woct")
+ui = NodePath("UI")
 player = NodePath("objPlayer")
 
 [node name="objPlayer" parent="." instance=ExtResource("1_rwqdj")]
@@ -36,7 +37,6 @@ rotation = -0.00613489
 autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
 script = ExtResource("3_6ivh3")
 
 [node name="Control" type="Control" parent="UI"]

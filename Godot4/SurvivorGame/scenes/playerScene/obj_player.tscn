@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://okehgeycytlh"]
+[gd_scene load_steps=31 format=3 uid="uid://okehgeycytlh"]
 
 [ext_resource type="Script" path="res://scripts/player/objPlayer.gd" id="1_cgdbf"]
 [ext_resource type="Texture2D" uid="uid://cjwx4boy6g3tg" path="res://resources/Pink Man/Idle (32x32).png" id="2_me0w5"]
@@ -182,9 +182,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_74jid"]
 radius = 32.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bw07a"]
-radius = 40.7922
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13ok2"]
 bg_color = Color(0, 0.728118, 0.0579292, 1)
 
@@ -209,17 +206,6 @@ unique_name_in_owner = true
 light_mask = 4
 visibility_layer = 4
 position = Vector2(5, 10)
-
-[node name="hurtBox" type="Area2D" parent="."]
-unique_name_in_owner = true
-light_mask = 0
-visibility_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
-light_mask = 0
-visibility_layer = 2
-shape = SubResource("CircleShape2D_bw07a")
-debug_color = Color(0.971406, 0, 0.448169, 0.42)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true

@@ -2,7 +2,7 @@ extends Node2D
 
 var enemies:int = 0
 var points:int = 0
-@onready var ui = %UI
+@export var ui:CanvasLayer
 @export var player: CharacterBody2D
 
 
@@ -31,5 +31,3 @@ func _on_timer_timeout():
 		spawn()
 		enemies += 1
 		ui._update_enemies_label(enemies)
-	else:
-		pass

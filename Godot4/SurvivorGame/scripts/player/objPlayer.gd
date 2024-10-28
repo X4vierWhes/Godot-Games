@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 var spd: float = 600.0
 var health: float = 100.0
@@ -33,15 +34,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		%obj_Gun.shoot(1)
 	
-	#Sistema de dano
-	const damage_rate = 15.0
-	var overlaping_mobs = %hurtBox.get_overlapping_bodies()
-	#print(overlaping_mobs.size())
-	if overlaping_mobs.size() > 1:
-		health -= damage_rate * overlaping_mobs.size() * delta
-		%ProgressBar.value = health
-		if health <= 0.0:
-			death = true
 
 func _take_damage(dmg:float) -> void:
 	health -= dmg
