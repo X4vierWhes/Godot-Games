@@ -1,24 +1,26 @@
 extends Node2D
 class_name Snake
 
-var direction: Vector2 = Vector2.ZERO
+@onready var direction: Vector2 = Vector2.ZERO
+@onready var canMove: bool = false
 
+signal move_input_detected(entity: Node2D, direction: Vector2)
 
-func _physics_process(delta: float) -> void:
-	#Direção da cobra
-	if Input.is_action_pressed("move_up"):
-		move_Snake(Vector2(0, -1))
-	elif Input.is_action_pressed("move_right"):
-		move_Snake(Vector2(1, 0))
-	elif Input.is_action_pressed("move_down"):
-		move_Snake(Vector2(0, -1))
-	elif Input.is_action_pressed("move_left"):
-		move_Snake(Vector2(-1, 0))
-	
-	#print(direction)
+func _ready() -> void:
+	$inputComponent.connect("inputDetection", playerInputDetection)
 	
 
+func _process(delta: float) -> void:
+	if direction != Vector2.ZERO && canMove:
+		emit_signal("move_input_detected", self, direction)
+		canMove = false
+		$MoveDelay.start()
 
-func move_Snake(newDirection: Vector2):
-	if newDirection != direction*(-1):
+func playerInputDetection(newDirection: Vector2) -> void:
+	if newDirection != direction * (-1):
 		direction = newDirection
+		print(direction)
+
+
+func _on_move_delay_timeout() -> void:
+	canMove = true 

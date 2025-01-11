@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw76duka0j6mt"]
+[gd_scene load_steps=4 format=3 uid="uid://dw76duka0j6mt"]
 
 [ext_resource type="Script" path="res://scripts/snake/obj_snake.gd" id="1_ffh7x"]
 [ext_resource type="Texture2D" uid="uid://b6syqo5q0xkq8" path="res://resources/dark_green.png" id="1_xn4y4"]
+[ext_resource type="Script" path="res://scripts/components/input_component.gd" id="3_yqspp"]
 
 [node name="objSnake" type="Node2D"]
 script = ExtResource("1_ffh7x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xn4y4")
+
+[node name="inputComponent" type="Node" parent="."]
+script = ExtResource("3_yqspp")
+
+[node name="MoveDelay" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="MoveDelay" to="." method="_on_move_delay_timeout"]

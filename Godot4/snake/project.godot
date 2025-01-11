@@ -11,8 +11,15 @@ config_version=5
 [application]
 
 config/name="Snake"
+run/main_scene="res://scenes/main/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=768
+window/size/resizable=false
 
 [input]
 
