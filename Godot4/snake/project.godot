@@ -21,6 +21,11 @@ window/size/viewport_width=1024
 window/size/viewport_height=768
 window/size/resizable=false
 
+[global_group]
+
+Food="Grupo da comida da cobra"
+Player="Grupo do Player"
+
 [input]
 
 move_left={

@@ -4,6 +4,9 @@ class_name Grid
 @onready var grid_size: Vector2 = Vector2(32, 24)
 @onready var cell_size: Vector2 = Vector2(32, 32)
 
+signal moved_into_death
+signal moved_into_food(food_entity: Node2D, entity: Node2D)
+
 var grid: Array
 
 func _ready() -> void:
@@ -58,16 +61,33 @@ func place_entity_at_random_pos(entity: Node2D) -> void:
 
 func move_entity_in_direction(entity: Node2D, direction: Vector2) -> void:
 	var oldPosition: Vector2 = world_to_map(entity.global_position)
-	if not is_within_bounds(oldPosition):
+	
+	if  not is_within_bounds(oldPosition):
 		return
-
+	
 	var newPosition: Vector2 = oldPosition + direction
 	newPosition.x = clamp(newPosition.x, 0, grid_size.x - 1)
 	newPosition.y = clamp(newPosition.y, 0, grid_size.y - 1)
-
+	
+	var entityOfNewCell: Node2D = get_entity_of_cell(newPosition)
+	if entityOfNewCell != null:
+		if entityOfNewCell.is_in_group("Player"):
+			setup_grid()
+			emit_signal("moved_into_death")
+		elif entityOfNewCell.is_in_group("Food"):
+			emit_signal("moved_into_food", entityOfNewCell, entity)
+	
 	if is_within_bounds(newPosition):
 		set_entity_in_cell(null, oldPosition)
 		place_entity(entity, newPosition)
+
+func move_entity_to_position(entity: Node2D, new_pos: Vector2) -> void:
+	var old_grid_pos: Vector2 = world_to_map(entity.position)
+	var new_grid_pos: Vector2 = world_to_map(new_pos)
+	
+	set_entity_in_cell(null, old_grid_pos)
+	place_entity(entity, new_grid_pos)
+	entity.global_position = _to_global(new_grid_pos) + cell_size/2
 
 func _to_global(grid_pos: Vector2) -> Vector2:
 	if is_within_bounds(grid_pos):

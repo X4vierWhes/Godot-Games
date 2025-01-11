@@ -7,3 +7,6 @@
 script = ExtResource("1_thspf")
 
 [node name="Grid" parent="." instance=ExtResource("1_ku2to")]
+
+[connection signal="moved_into_death" from="Grid" to="." method="_on_grid_moved_into_death"]
+[connection signal="moved_into_food" from="Grid" to="." method="_on_grid_moved_into_food"]
