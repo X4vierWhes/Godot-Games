@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5deyr2nq1d4o"]
+
+[ext_resource type="Texture2D" uid="uid://cc6j1mpo126hf" path="res://old.png" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://da1uql3t0rqgr" path="res://old_n.png" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://d2n38nuqga6m2" path="res://old_s.png" id="3_lquwl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7mycd"]
+diffuse_texture = ExtResource("1_h2yge")
+normal_texture = ExtResource("2_1bvp3")
+specular_texture = ExtResource("3_lquwl")
+texture_filter = 3
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_272bh"]
+closed = false
+cull_mode = 1
+polygon = PackedVector2Array(4, 6, -3.66666, 5.66667, -4.33333, 6, -5, 8, -5.33333, 10.3333, -5, 14.6667, -3.66666, 15.6667, 4.33334, 15.3333, 4, 12.3333, 4.66667, 9, 4, 6)
+
+[sub_resource type="Gradient" id="Gradient_5vw27"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.0324675, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kek77"]
+gradient = SubResource("Gradient_5vw27")
+fill = 1
+fill_from = Vector2(0.53211, 0.513761)
+fill_to = Vector2(0.912844, 0.83945)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4c57u"]
+cull_mode = 1
+polygon = PackedVector2Array(769, 329, 742, 436, 869, 454, 898, 391, 849, 342, 862, 307)
+
+[node name="main" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(107, 108)
+
+[node name="Icon" type="Sprite2D" parent="Node2D"]
+texture_filter = 3
+position = Vector2(558, 315)
+scale = Vector2(3, 3)
+texture = SubResource("CanvasTexture_7mycd")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D"]
+texture_filter = 3
+position = Vector2(558, 315)
+scale = Vector2(3, 3)
+occluder = SubResource("OccluderPolygon2D_272bh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(556, 505)
+editor_only = true
+energy = 2.38
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.447059)
+shadow_filter = 2
+shadow_filter_smooth = 10.4
+texture = SubResource("GradientTexture2D_kek77")
+texture_scale = 11.94
+height = 254.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-28, -27)
+occluder = SubResource("OccluderPolygon2D_4c57u")
