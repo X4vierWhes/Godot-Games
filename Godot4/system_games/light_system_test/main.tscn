@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5deyr2nq1d4o"]
+[gd_scene load_steps=9 format=3 uid="uid://b5deyr2nq1d4o"]
 
 [ext_resource type="Texture2D" uid="uid://cc6j1mpo126hf" path="res://old.png" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://da1uql3t0rqgr" path="res://old_n.png" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://d2n38nuqga6m2" path="res://old_s.png" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://ym2nm11cl8fj" path="res://light_mask.jpeg" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://hcxso0w81uvi" path="res://icon.svg" id="4_lquwl"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7mycd"]
+cull_mode = 1
+polygon = PackedVector2Array(5, 6.66667, 3.66667, 5, -4, 5, -5, 6, -5.66667, 8.66667, -5, 15, -4, 16, 5, 16, 5, 11, 6, 10, 6, 7)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7mycd"]
 diffuse_texture = ExtResource("1_h2yge")
@@ -11,22 +16,21 @@ normal_texture = ExtResource("2_1bvp3")
 specular_texture = ExtResource("3_lquwl")
 texture_filter = 3
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_272bh"]
-closed = false
-cull_mode = 1
-polygon = PackedVector2Array(4, 6, -3.66666, 5.66667, -4.33333, 6, -5, 8, -5.33333, 10.3333, -5, 14.6667, -3.66666, 15.6667, 4.33334, 15.3333, 4, 12.3333, 4.66667, 9, 4, 6)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4c57u"]
 cull_mode = 1
 polygon = PackedVector2Array(769, 329, 742, 436, 869, 454, 898, 391, 849, 342, 862, 307)
 
 [node name="main" type="Node2D"]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.485703, 0.485704, 0.485703, 1)
-
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(107, 108)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D"]
+show_behind_parent = true
+texture_filter = 3
+position = Vector2(558, 315)
+scale = Vector2(3, 3)
+occluder = SubResource("OccluderPolygon2D_7mycd")
 
 [node name="Icon" type="Sprite2D" parent="Node2D"]
 texture_filter = 3
@@ -34,25 +38,21 @@ position = Vector2(558, 315)
 scale = Vector2(3, 3)
 texture = SubResource("CanvasTexture_7mycd")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D"]
-texture_filter = 3
-position = Vector2(558, 315)
-scale = Vector2(3, 3)
-occluder = SubResource("OccluderPolygon2D_272bh")
-sdf_collision = false
+[node name="Icon2" type="Sprite2D" parent="Node2D"]
+position = Vector2(658, 364)
+texture = ExtResource("4_lquwl")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(623, 409)
-editor_only = true
-energy = 2.38
+position = Vector2(288, 395)
 shadow_enabled = true
-shadow_color = Color(0, 0, 0, 0.447059)
-shadow_filter = 2
 shadow_filter_smooth = 10.4
 texture = ExtResource("4_1bvp3")
 texture_scale = 11.94
 height = 254.0
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(6, 69)
+position = Vector2(94, -135)
 occluder = SubResource("OccluderPolygon2D_4c57u")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.485703, 0.485704, 0.485703, 1)
